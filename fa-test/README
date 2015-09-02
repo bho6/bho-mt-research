@@ -1,0 +1,6 @@
+This implements a function sampler which samples points from an arbitrary
+function. There is also a function approximator built in Theano that implements
+a feed-forward neural network to approximate the sampled points from the
+function sampler.
+
+This is mainly used as a test to get familiar with Theano.
