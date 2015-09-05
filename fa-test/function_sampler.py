@@ -1,8 +1,8 @@
 # This script implements a function sampler over a range. The user can specify
 # a separate Python file that implements the 'func' function (maybe written in
 # Theano). This script will then sample n number of points and output them to
-# standard output in the form 'input1 output1\ninput2 output2\n...' one pair per
-# line.
+# standard output in the form 'input1 output1\ninput2 output2\n...' one pair
+# per line.
 #
 # Usage: python function_sampler.py script x_min x_max num
 #
@@ -53,6 +53,8 @@ def main():
   for _ in xrange(num_samples):
     sample_point = (random.random() * (domain_max - domain_min)) + domain_min
     outputs.append('{} {}'.format(sample_point, sample_function(sample_point)))
+
+  # Print all at once.
   print '\n'.join(outputs)
 
 

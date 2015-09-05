@@ -7,5 +7,8 @@
 
 import math
 
+# All valid inputs to function_sampler.py need to implement a function named
+# 'function'. The function takes in a singular float as an argument and returns
+# another float.
 def function(num):
   return math.sin(num)
