@@ -1,0 +1,71 @@
+Installation Instructions for GroundHog (OS X 10.10.2)
+Brian Ho
+bho6@jhu.edu
+September 21st, 2015
+
+
+Motivation:
+  This guide was created because the traditional process of using brew and pip
+  to install GroundHog results in various errors on the invocation of
+  dlopen(/Library/Python/2.7/site-packages/tables/utilsextension.so, 2). This
+  document assumes the reader has working installations of Theano, NumPy, and
+  SciPy.
+
+Versions of Dependencies Used:
+  - OS X: 10.10.2 (Yosemite)
+  - Python: 2.7.6
+  - NumPy: 1.9.2
+  - SciPy: 0.13.0b1
+  - numexpr: 2.4.4
+  - Theano: 0.7.0
+  - HDF5: 1.8.15-patch1
+  - tables: 2.4.0
+  - GroundHog: commit 4d2433b
+
+Instructions:
+  1. Ensure that you already have Python, NumPy, SciPy, Theano, and numexpr
+     installed. This can be done through pip without any issue.
+
+  2. GroundHog relies on the HDF5 library. Unfortunately, as previously alluded
+     to in 'motivation', brew install hdf5 and port install hdf5 do not work in
+     OS X Yosemite for GroundHog. We must install it directly from source.
+    
+    - Get the source from:
+      http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.15-patch1.tar
+
+    - Follow the instructions in the README, but the short version is to untar
+      the directory and run this sequence of commands:
+      ./configure --prefix=/usr/local/hdf5
+      make
+      make check
+      sudo make install
+      sudo make check-install
+
+      Once this is done, verify that HDF5 was installed by running
+      '/usr/local/hdf5/bin/h5cc -showconfig'.
+
+  3. Now that GroundHog is installed, we must install the PyTables module. This
+     is required by GroundHog. Again, the traditional 'pip install tables' does
+     not work, so we must download from source.
+
+    - IMPORTANT: The KEY INSIGHT HERE is that we need to install Pytables
+      version 2.4.0, and NOT THE LATEST VERSION of 3.2.0. Get from:
+      http://sourceforge.net/projects/pytables/files/pytables/2.4.0/tables-2.4.0.tar.gz/download
+
+    - Follow the instructions in the README, but the short version is to untar
+      the dirctory and run: sudo python setup.py install
+
+    - Verify that HDFS was installed by starting a Python interactive shell and
+      running 'import tables'.
+
+  4. Now checkout the latest GroundHog source from:
+     https://github.com/lisa-groundhog/GroundHog
+
+     - Install by typing sudo 'python setup.py develop'.
+
+     - Verify that the installation worked by 'import groundhog' in a Python
+       intaractive shell.
+
+  5. Now everything should be set up. Try working through the neural MT
+     experiment in the experiment/ directory.
+

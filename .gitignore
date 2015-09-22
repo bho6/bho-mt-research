@@ -1,5 +1,8 @@
 .DS_Store
 
+inflector/
+groundhog/GroundHog/experiments/nmt/es-en/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
