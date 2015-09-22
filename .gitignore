@@ -1,7 +1,7 @@
 .DS_Store
 
 inflector/
-groundhog/GroundHog/experiments/nmt/es-en/
+groundhog/GroundHog/experiments/nmt/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

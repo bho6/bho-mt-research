@@ -69,3 +69,11 @@ Instructions:
   5. Now everything should be set up. Try working through the neural MT
      experiment in the experiment/ directory.
 
+     NOTE: The preprocessing scripts 'convert-pkl2hdf5.py' and 'shuffle-hdf5.py'
+     rely on a newer version of PyTables where openFile has been renamed to
+     open_file. If you get an error while running these scripts, simply change
+     all instances of open_file to openFile. Similarly, get_node should be named
+     getNode.
+
+     If you get an error about downcast/upcast of float32/64, try running the
+     driver script prepended with 'THEANO_FLAGS='floatX=float32'.
